@@ -23,10 +23,10 @@ public class FxRatesResponse {
     }
 
     public Map<String, BigDecimal> getRates() {
-        return rates;
+        return rates == null ? null : Map.copyOf(rates);
     }
 
     public void setRates(Map<String, BigDecimal> rates) {
-        this.rates = rates;
+        this.rates = rates == null ? null : Map.copyOf(rates);
     }
 }

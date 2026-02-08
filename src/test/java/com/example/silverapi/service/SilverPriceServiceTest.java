@@ -1,6 +1,5 @@
 package com.example.silverapi.service;
 
-import com.example.silverapi.config.SilverApiProperties;
 import com.example.silverapi.dto.SilverPriceResponse;
 import com.example.silverapi.exception.SilverApiUnavailableException;
 import org.junit.jupiter.api.Test;
@@ -22,8 +21,7 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 class SilverPriceServiceTest {
 
     private SilverPriceService createService(RestClient silverClient, RestClient fxClient) {
-        SilverApiProperties properties = new SilverApiProperties();
-        return new SilverPriceService(silverClient, fxClient, properties);
+        return new SilverPriceService(silverClient, fxClient);
     }
 
     @Test

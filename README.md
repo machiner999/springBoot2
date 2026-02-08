@@ -14,6 +14,29 @@ export GOLDAPI_API_KEY=your_key
 ./gradlew bootRun
 ```
 
+## Quality Checks
+```bash
+./gradlew clean check
+./gradlew jacocoTestReport
+```
+
+## Dependency Check (Local Only)
+```bash
+export NVD_API_KEY=your_key
+./gradlew dependencyCheckAnalyze
+```
+
+Reports are generated under:
+- `build/reports/tests/test/index.html`
+- `build/reports/jacoco/test/html/index.html`
+- `build/reports/checkstyle/`
+- `build/reports/spotbugs/`
+- `build/reports/dependency-check-report.html`
+
+## GitHub Settings
+- Protect `main` and require the `ci` workflow to pass on pull requests.
+- Add `GOLDAPI_API_KEY` in GitHub Actions Secrets if needed for live API tests.
+
 ## Endpoint
 `GET /api/silver/price`
 

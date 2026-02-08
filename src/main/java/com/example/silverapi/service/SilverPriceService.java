@@ -1,6 +1,5 @@
 package com.example.silverapi.service;
 
-import com.example.silverapi.config.SilverApiProperties;
 import com.example.silverapi.dto.FxRatesResponse;
 import com.example.silverapi.dto.SilverApiComResponse;
 import com.example.silverapi.dto.SilverPriceResponse;
@@ -23,12 +22,10 @@ public class SilverPriceService {
 
     private final RestClient silverApiRestClient;
     private final RestClient fxRestClient;
-    private final SilverApiProperties properties;
 
-    public SilverPriceService(RestClient silverApiRestClient, RestClient fxRestClient, SilverApiProperties properties) {
+    public SilverPriceService(RestClient silverApiRestClient, RestClient fxRestClient) {
         this.silverApiRestClient = silverApiRestClient;
         this.fxRestClient = fxRestClient;
-        this.properties = properties;
     }
 
     public SilverPriceResponse getCurrentPrice() {

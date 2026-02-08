@@ -26,7 +26,7 @@ export GOLDAPI_API_KEY=your_key
 ./gradlew test --tests ClassName.methodName
 ```
 
-Java 17+ required. Gradle wrapper included (`./gradlew`).
+Java 21+ required. Gradle wrapper included (`./gradlew`).
 
 ## Architecture
 

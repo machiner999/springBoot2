@@ -1,0 +1,44 @@
+name: ci
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+          cache: "gradle"
+
+      - name: Cache Dependency-Check data
+        uses: actions/cache@v4
+        with:
+          path: build/dependency-check-data
+          key: dependency-check-${{ runner.os }}-${{ hashFiles('**/build.gradle', '**/settings.gradle', 'gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
+            dependency-check-${{ runner.os }}-
+
+      - name: Run quality checks
+        env:
+          GOLDAPI_API_KEY: ${{ secrets.GOLDAPI_API_KEY }}
+        run: ./gradlew clean check jacocoTestReport
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: |
+            build/reports/**
