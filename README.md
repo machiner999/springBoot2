@@ -1,7 +1,7 @@
 # Spring Boot Silver Price API
 
 ## Overview
-Spring Boot 3.5 REST API that returns the current silver price in JPY.
+Spring Boot 4.0 REST API that returns the current silver price in JPY.
 
 ## Requirements
 - Java 21+
